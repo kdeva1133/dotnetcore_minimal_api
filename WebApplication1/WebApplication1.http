@@ -1,0 +1,21 @@
+﻿@WebApplication1_HostAddress = http://localhost:5079
+
+POST {{WebApplication1_HostAddress}}/createtodoitem
+Content-Type: application/json
+
+{
+  "name":"New dog",
+  "isComplete":false
+}
+
+###
+
+
+POST {{WebApplication1_HostAddress}}/createtodoitem
+Content-Type: application/json
+
+{
+  //Todo
+}
+
+###
