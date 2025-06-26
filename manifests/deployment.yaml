@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workflowaks
+  name: apiworkflow
   labels:
-    app.kubernetes.io/name: workflowaks
+    app.kubernetes.io/name: apiworkflow
     kubernetes.azure.com/generator: devhub
-  namespace: sample-app-namespace-1750914266915
+  namespace: sample-app-namespace-1750930897184
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: workflowaks
+      app.kubernetes.io/name: apiworkflow
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: workflowaks
+        app.kubernetes.io/name: apiworkflow
     spec:
       containers:
-        - name: workflowaks
-          image: dkcontainerregistery1234.azurecr.io/image-workflow-1750914266911:latest
+        - name: apiworkflow
+          image: dkcontainerregistery1234.azurecr.io/image-workflow-1750930897171:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
           resources:
             requests:
               cpu: "0.5"
@@ -31,16 +31,16 @@ spec:
               memory: "1Gi"
           envFrom:
             - configMapRef:
-                name: workflowaks-config
+                name: apiworkflow-config
             - secretRef:
                 name: secret-ref
                 optional: true
           livenessProbe:
             tcpSocket:
-              port: 8080
+              port: 5000
           readinessProbe:
             tcpSocket:
-              port: 8080
+              port: 5000
             periodSeconds: 5
             timeoutSeconds: 5
             failureThreshold: 1
@@ -48,7 +48,7 @@ spec:
             initialDelaySeconds: 3
           startupProbe:
             tcpSocket:
-              port: 8080
+              port: 5000
             periodSeconds: 10
             timeoutSeconds: 1
             failureThreshold: 3
@@ -83,11 +83,11 @@ spec:
               topologyKey: kubernetes.io/hostname
               labelSelector:
                 matchLabels:
-                  app.kubernetes.io/name: workflowaks
+                  app.kubernetes.io/name: apiworkflow
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname
           whenUnsatisfiable: ScheduleAnyway
           labelSelector:
             matchLabels:
-              app.kubernetes.io/name: workflowaks
+              app.kubernetes.io/name: apiworkflow

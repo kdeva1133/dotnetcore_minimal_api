@@ -1,16 +1,16 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: workflowaks
+  name: apiworkflow
   labels:
-    app.kubernetes.io/name: workflowaks
-    app.kubernetes.io/part-of: workflowaks-project
+    app.kubernetes.io/name: apiworkflow
+    app.kubernetes.io/part-of: apiworkflow-project
     kubernetes.azure.com/generator: devhub
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: workflowaks
+    name: apiworkflow
   minReplicas: 1
   maxReplicas: 5
   metrics:
