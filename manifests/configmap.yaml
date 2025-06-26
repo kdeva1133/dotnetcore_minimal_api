@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: apiworkflow-config
+  name: apiworkflow2-config
   namespace: sample-app-namespace-1750930897184
   labels:
-    app.kubernetes.io/name: apiworkflow
+    app.kubernetes.io/name: apiworkflow2
     kubernetes.azure.com/generator: devhub
 data:
