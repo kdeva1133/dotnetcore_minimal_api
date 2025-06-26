@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: workflowaks
+  namespace: sample-app-namespace-1750914266915
+  labels:
+    app.kubernetes.io/name: workflowaks
+    kubernetes.azure.com/generator: devhub
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: workflowaks
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
