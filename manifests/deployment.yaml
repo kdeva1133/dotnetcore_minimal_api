@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apiworkflow2
+  name: apiworkflow
   labels:
-    app.kubernetes.io/name: apiworkflow2
+    app.kubernetes.io/name: apiworkflow
     kubernetes.azure.com/generator: devhub
-  namespace: sample-app-namespace-1750930897184
+  namespace: sample-app-namespace-1751004940473
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: apiworkflow2
+      app.kubernetes.io/name: apiworkflow
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: apiworkflow2
+        app.kubernetes.io/name: apiworkflow
     spec:
       containers:
-        - name: apiworkflow2
-          image: dkcontainerregistery1234.azurecr.io/image-workflow-1750931207788:latest
+        - name: apiworkflow
+          image: dkakscontainerregistery.azurecr.io/image-workflow-1751004940462:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -31,7 +31,7 @@ spec:
               memory: "1Gi"
           envFrom:
             - configMapRef:
-                name: apiworkflow2-config
+                name: apiworkflow-config
             - secretRef:
                 name: secret-ref
                 optional: true
@@ -83,11 +83,11 @@ spec:
               topologyKey: kubernetes.io/hostname
               labelSelector:
                 matchLabels:
-                  app.kubernetes.io/name: apiworkflow2
+                  app.kubernetes.io/name: apiworkflow
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname
           whenUnsatisfiable: ScheduleAnyway
           labelSelector:
             matchLabels:
-              app.kubernetes.io/name: apiworkflow2
+              app.kubernetes.io/name: apiworkflow
