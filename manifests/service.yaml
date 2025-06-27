@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: apiworkflow2
-  namespace: sample-app-namespace-1750930897184
+  name: apiworkflow
+  namespace: sample-app-namespace-1751004940473
   labels:
-    app.kubernetes.io/name: apiworkflow2
+    app.kubernetes.io/name: apiworkflow
     kubernetes.azure.com/generator: devhub
 spec:
   type: LoadBalancer
   selector:
-    app.kubernetes.io/name: apiworkflow2
+    app.kubernetes.io/name: apiworkflow
   ports:
     - protocol: TCP
       port: 8080
