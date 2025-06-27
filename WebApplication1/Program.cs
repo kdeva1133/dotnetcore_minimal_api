@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddCors(options => { 
-    options.AddPolicy("AllowReactApp", policy => policy.WithOrigins("http://localhost:3000 http://localhost:4200 http://4.149.72.177:3000/")
+    options.AddPolicy("AllowReactApp", policy => policy.WithOrigins("http://4.149.72.177:3000")
     .AllowAnyMethod()
     .AllowAnyHeader()); 
 });
